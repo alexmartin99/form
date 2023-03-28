@@ -65,7 +65,7 @@ export const Review = ({ formData, navigation }) => {
 };
 
 export const RenderAccordion = ({ summary, details, go }) => (
-  <Accordion>
+  <Accordion style={{ backgroundColor: '#f0f0f0', width: "100%"}}>
     <AccordionSummary
       expandIcon={<ExpandMoreIcon />}
     >{summary}</AccordionSummary>
