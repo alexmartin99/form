@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import Dropzone from "react-dropzone";
+import './form.css'
 
 export const Upload = ({ formData, setForm, navigation }) => {
   const [files1, setFiles1] = useState([]);
@@ -30,7 +31,7 @@ export const Upload = ({ formData, setForm, navigation }) => {
     setForm({ ...formData, upload2: acceptedFiles });
   };
 
-  const handleSubmit = (e) => {
+  const handleNext = (e) => {
     e.preventDefault();
     const isValid = validate();
     if (isValid) {
@@ -41,7 +42,7 @@ export const Upload = ({ formData, setForm, navigation }) => {
   return (
     <Container maxWidth="xs">
       <h3>Upload Documents</h3>
-
+      <div className="form-wrapper">
       <Dropzone onDrop={handleDrop1}>
         {({ getRootProps, getInputProps }) => (
           <div style={{ marginTop: "1rem" }}>
@@ -96,7 +97,7 @@ export const Upload = ({ formData, setForm, navigation }) => {
 
       <div style={{ marginTop: "1rem" }}>
         <Button
-          color="secondary"
+          color="neutral"
           variant="contained"
           style={{ marginRight: "1rem" }}
           onClick={() => navigation.previous()}
@@ -106,10 +107,11 @@ export const Upload = ({ formData, setForm, navigation }) => {
         <Button
           color="primary"
           variant="contained"
-          onClick={handleSubmit}
+          onClick={handleNext}
         >
           Next
         </Button>
+      </div>
       </div>
     </Container>
   );

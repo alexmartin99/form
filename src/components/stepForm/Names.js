@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import './form.css'
 
 export const Names = ({ formData, setForm, navigation }) => {
   const [errors, setErrors] = useState({}); // state to hold validation errors
@@ -35,8 +36,9 @@ export const Names = ({ formData, setForm, navigation }) => {
   };
 
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="xs" className="container">
       <h3>Customer Details</h3>
+      <div className="form-wrapper">
       <TextField
         label="First Name"
         name="firstName"
@@ -82,6 +84,8 @@ export const Names = ({ formData, setForm, navigation }) => {
       >
         Next
       </Button>
+      </div>
     </Container>
+    
   );
 };

@@ -3,6 +3,7 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+
 export const VehicleDetails = ({ formData, setForm, navigation }) => {
   const [errors, setErrors] = useState({}); // initialize empty errors object
   const { vbrand, vtype, vno } = formData;
@@ -28,7 +29,7 @@ export const VehicleDetails = ({ formData, setForm, navigation }) => {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleNext = (e) => {
     e.preventDefault();
     if (validate()) {
       navigation.next();
@@ -38,7 +39,7 @@ export const VehicleDetails = ({ formData, setForm, navigation }) => {
   return (
     <Container maxWidth="xs">
       <h3>Vehicle Details</h3>
-      <form onSubmit={handleSubmit}>
+      <div className="form-wrapper">
         <TextField
           label="Vehicle Brand"
           name="vbrand"
@@ -77,18 +78,21 @@ export const VehicleDetails = ({ formData, setForm, navigation }) => {
         />
         <div style={{ marginTop: "1rem" }}>
           <Button
-            color="secondary"
+            color="neutral"
             variant="contained"
             style={{ marginRight: "1rem" }}
             onClick={() => navigation.previous()}
           >
             Back
           </Button>
-          <Button color="primary" variant="contained" type="submit">
+          <Button color="primary" 
+                  variant="contained"
+                  onClick={handleNext}
+                  >
             Next
           </Button>
         </div>
-      </form>
+        </div>
     </Container>
   );
 };

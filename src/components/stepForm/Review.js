@@ -8,6 +8,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
+import './form.css'
 
 export const Review = ({ formData, navigation }) => {
   const { go } = navigation;
@@ -29,6 +30,7 @@ export const Review = ({ formData, navigation }) => {
   return (
     <Container maxWidth='sm'>
       <h3>Review</h3>
+      <div className="form-wrapper">
       <RenderAccordion summary="Names" go={ go } details={[
         { 'First Name': firstName },
         { 'Last Name': lastName },
@@ -57,7 +59,7 @@ export const Review = ({ formData, navigation }) => {
       >
         Submit
       </Button>
-
+      </div>
     </Container>
   );
 };
