@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
+import './form.css'
 
 export const BatteryDetails = ({ formData, setForm, navigation }) => {
   const { bbrand, btype, srno, claimType } = formData;
@@ -66,7 +67,7 @@ export const BatteryDetails = ({ formData, setForm, navigation }) => {
     setForm({ ...formData, claimType: event.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleNext = () => {
     if (handleValidation()) {
       navigation.next();
     }
@@ -75,6 +76,7 @@ export const BatteryDetails = ({ formData, setForm, navigation }) => {
   return (
     <Container maxWidth="xs">
       <h3>Battery Details</h3>
+      <div className="form-wrapper">
       <TextField
         label="Battery Brand"
         name="bbrand"
@@ -125,28 +127,9 @@ export const BatteryDetails = ({ formData, setForm, navigation }) => {
         error={errors["srno"] ? true : false}
         helperText={errors["srno"]}
       />
-      <RadioGroup
-        aria-label="claim-type"
-        name="claimType"
-        value={claimType}
-        onChange={handleClaimTypeChange}
-      >
-        <FormControlLabel
-          value="NewClaim"
-          control={<Radio />}
-          label="New Claim"
-          checked={claimType === "NewClaim"}
-        />
-        <FormControlLabel
-          value="ReplacedBattery"
-          control={<Radio />}
-          label="Replaced Battery"
-          checked={claimType === "ReplacedBattery"}
-        />
-      </RadioGroup>
       <div style={{ marginTop: "1rem" }}>
         <Button
-          color="secondary"
+          color="neutral"
           variant="contained"
           style={{ marginRight: "1rem" }}
           onClick={() => navigation.previous()}
@@ -156,10 +139,11 @@ export const BatteryDetails = ({ formData, setForm, navigation }) => {
         <Button
           color="primary"
           variant="contained"
-          onClick={handleSubmit}
+          onClick={handleNext}
         >
           Next
         </Button>
+      </div>
       </div>
     </Container>
   );
