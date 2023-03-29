@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, useStep } from "react-hooks-helper";
 import { Names } from "./stepForm/Names";
 import { VehicleDetails } from "./stepForm/VehicleDetails";
@@ -8,56 +8,67 @@ import { Submit } from "./stepForm/Submit";
 import { Upload } from "./stepForm/Upload";
 
 const defaultData = {
-  firstName: "",
-  lastName: "",
-  contact: "",
-  bbrand: "",
-  btype: "",
-  claimType: "",
-  srno: "",
-  vbrand: "",
-  vtype: "",
-  vno: "",
-  upload1: "",
-  upload2: "",
+	firstName: "",
+	lastName: "",
+	contact: "",
+	bbrand: "",
+	btype: "",
+	claimType: "",
+	srno: "",
+	vbrand: "",
+	vtype: "",
+	vno: "",
 };
 
-const steps = [
-  { id: "names" },
-  { id: "battery details" },
-  { id: "vehicle details" },
-  { id: "upload" },
-  { id: "review" },
-  { id: "submit" },
+const newRegistrationSteps = [
+	{ id: "names", Comp: Names },
+	{ id: "battery details", Comp: BatteryDetails },
+	{ id: "vehicle details", Comp: VehicleDetails },
+	{ id: "upload", Comp: Upload },
+	{ id: "review", Comp: Review },
+	{ id: "submit", Comp: Submit },
 ];
 
-export const MultiStepForm = () => {
-  const [formData, setForm] = useForm(defaultData);
-  const { step, navigation } = useStep({
-    steps,
-    initialStep: 0,
-  });
+const alreadyRegisteredSteps = [
+	{ id: "battery details", Comp: BatteryDetails },
+	{ id: "vehicle details", Comp: VehicleDetails },
+	{ id: "upload", Comp: Upload },
+	{ id: "review", Comp: Review },
+	{ id: "submit", Comp: Submit },
+];
 
-  const props = { formData, setForm, navigation };
+export const MultiStepForm = ({ type }) => {
+	const [formData, setForm] = useForm(defaultData);
+	const [uploadFront, setuploadFront] = useState({});
+	const [uploadBack, setuploadBack] = useState({});
 
-  switch (step.id) {
-    case "names":
-      return <Names {...props} />;
-    case "battery details":
-      return <BatteryDetails {...props} />;
-    case "vehicle details":
-      return <VehicleDetails {...props} />;
-      case "upload":
-      return <Upload {...props} />;
-    case "review":
-      return <Review {...props} />;
-    case "submit":
-      return <Submit {...props} />;
-  }
+	//based on type render the steps
+	const steps = type === "old" ? alreadyRegisteredSteps : newRegistrationSteps;
+	const { step, navigation } = useStep({
+		steps,
+		initialStep: 0,
+	});
 
-  return (
-    <div>
-      <h1>Error 404</h1>
-    </div>
-  );
+	const props = {
+		formData,
+		setForm,
+		navigation,
+		uploadBack,
+		uploadFront,
+		setuploadBack,
+		setuploadFront,
+	};
+
+	//get step details according to id
+	const StepDetails = steps.find((v) => v.id === step.id);
+
+	if (!StepDetails) {
+		return (
+			<div>
+				<h1>Error 404</h1>
+			</div>
+		);
+	}
+
+	return <StepDetails.Comp {...props} />;
 };
