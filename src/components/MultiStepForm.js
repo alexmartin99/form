@@ -6,6 +6,8 @@ import { BatteryDetails } from "./stepForm/BatteryDetails";
 import { Review } from "./stepForm/Review";
 import { Submit } from "./stepForm/Submit";
 import { Upload } from "./stepForm/Upload";
+import {AlreadyRegistered} from "./stepForm/AreadyRegistered";
+import { Review1 } from "./stepForm/Review1";
 
 const defaultData = {
 	firstName: "",
@@ -18,6 +20,8 @@ const defaultData = {
 	vbrand: "",
 	vtype: "",
 	vno: "",
+	bsrno: "",
+	csrno: "",
 };
 
 const newRegistrationSteps = [
@@ -30,10 +34,10 @@ const newRegistrationSteps = [
 ];
 
 const alreadyRegisteredSteps = [
+	{ id: "registered details", Comp: AlreadyRegistered },
 	{ id: "battery details", Comp: BatteryDetails },
-	{ id: "vehicle details", Comp: VehicleDetails },
 	{ id: "upload", Comp: Upload },
-	{ id: "review", Comp: Review },
+	{ id: "review", Comp: Review1 },
 	{ id: "submit", Comp: Submit },
 ];
 

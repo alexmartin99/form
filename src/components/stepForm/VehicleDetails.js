@@ -88,6 +88,7 @@ export const VehicleDetails = ({ formData, setForm, navigation }) => {
           <Button color="primary" 
                   variant="contained"
                   onClick={handleNext}
+                  style={{color:"white",backgroundColor:"#ff3131"}}
                   >
             Next
           </Button>

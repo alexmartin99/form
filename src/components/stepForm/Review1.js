@@ -10,18 +10,14 @@ import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import "./form.css";
 
-export const Review = ({ formData, navigation, uploadBack, uploadFront }) => {
+export const Review1 = ({ formData, navigation, uploadBack, uploadFront }) => {
 	const { go } = navigation;
 	const {
-		firstName,
-		lastName,
 		contact,
+		ticketno,
 		bbrand,
 		btype,
 		srno,
-		vbrand,
-		vtype,
-		vno,
 	} = formData;
 
 	return (
@@ -29,12 +25,11 @@ export const Review = ({ formData, navigation, uploadBack, uploadFront }) => {
 			<h3>Review</h3>
 			<div className="form-wrapper">
 				<RenderAccordion
-					summary="Names"
+					summary="Registered Details"
 					go={go}
 					details={[
-						{ "First Name": firstName },
-						{ "Last Name": lastName },
-						{ "Contact No": contact },
+						{ "Contact no": contact },
+						{ "Ticket No": ticketno },
 					]}
 				/>
 				<RenderAccordion
@@ -44,15 +39,6 @@ export const Review = ({ formData, navigation, uploadBack, uploadFront }) => {
 						{ "Battery Brand": bbrand },
 						{ "Battery Type": btype },
 						{ "Serial No": srno },
-					]}
-				/>
-				<RenderAccordion
-					summary="Vehicle Details"
-					go={go}
-					details={[
-						{ "Vehicle Brand": vbrand },
-						{ "Vehicle Model": vtype },
-						{ "Vehicle Reg-No": vno },
 					]}
 				/>
 				<RenderAccordion
@@ -85,6 +71,7 @@ export const RenderAccordion = ({ summary, details, go }) => {
 	if (isUpload) {
 		const imageFrontFile = Object.values(details[0]);
 		previewFront = URL.createObjectURL(imageFrontFile[0]);
+		<br></br>
 
 		const imageBackFile = Object.values(details[1]);
 		previewBack = URL.createObjectURL(imageBackFile[0]);
@@ -100,7 +87,7 @@ export const RenderAccordion = ({ summary, details, go }) => {
 					{isUpload ? (
 						<>
 							<img src={previewFront} width={200} alt="Front" />
-							<img src={previewBack} width={200} alt="back" style={{ marginLeft: '10px' }}/>
+							<img src={previewBack} width={200} alt="back" style={{ marginLeft: '10px' }} />
 						</>
 					) : (
 						details.map((data, index) => {
