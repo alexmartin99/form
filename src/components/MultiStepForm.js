@@ -6,7 +6,7 @@ import { BatteryDetails } from "./stepForm/BatteryDetails";
 import { Review } from "./stepForm/Review";
 import { Submit } from "./stepForm/Submit";
 import { Upload } from "./stepForm/Upload";
-import {AlreadyRegistered} from "./stepForm/AreadyRegistered";
+import { AlreadyRegistered } from "./stepForm/AreadyRegistered";
 import { Review1 } from "./stepForm/Review1";
 
 const defaultData = {
@@ -42,9 +42,10 @@ const alreadyRegisteredSteps = [
 ];
 
 export const MultiStepForm = ({ type }) => {
-	const [formData, setForm] = useForm(defaultData);
 	const [uploadFront, setuploadFront] = useState({});
 	const [uploadBack, setuploadBack] = useState({});
+	const [submitted_ticket_no, setsubmitted_ticket_no] = useState();
+	const [formData, setForm] = useForm(defaultData);
 
 	//based on type render the steps
 	const steps = type === "old" ? alreadyRegisteredSteps : newRegistrationSteps;
@@ -61,6 +62,8 @@ export const MultiStepForm = ({ type }) => {
 		uploadFront,
 		setuploadBack,
 		setuploadFront,
+		submitted_ticket_no,
+		setsubmitted_ticket_no,
 	};
 
 	//get step details according to id
