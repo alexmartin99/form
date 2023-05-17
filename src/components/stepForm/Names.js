@@ -79,7 +79,7 @@ export const Names = ({ formData, setForm, navigation }) => {
         variant="contained"
         fullWidth
         color="primary"
-        style={{ marginTop: "1rem" }}
+        style={{ marginTop: "1rem",color:"white",backgroundColor:"#ff3131"}}
         onClick={handleNext}
       >
         Next

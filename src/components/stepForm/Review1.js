@@ -11,7 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import "./form.css";
 
-export const Review = ({
+export const Review1 = ({
 	formData,
 	navigation,
 	uploadBack,
@@ -23,6 +23,7 @@ export const Review = ({
 	const {
 		firstName,
 		lastName,
+		ticketno,
 		contact,
 		bbrand,
 		btype,
@@ -75,13 +76,9 @@ export const Review = ({
 			<h3>Review</h3>
 			<div className="form-wrapper">
 				<RenderAccordion
-					summary="Names"
+					summary="Registered Details"
 					go={go}
-					details={[
-						{ "First Name": firstName },
-						{ "Last Name": lastName },
-						{ "Contact No": contact },
-					]}
+					details={[{ "Contact no": contact }, { "Ticket No": ticketno }]}
 				/>
 				<RenderAccordion
 					summary="Battery Details"
@@ -90,15 +87,6 @@ export const Review = ({
 						{ "Battery Brand": bbrand },
 						{ "Battery Type": btype },
 						{ "Serial No": srno },
-					]}
-				/>
-				<RenderAccordion
-					summary="Vehicle Details"
-					go={go}
-					details={[
-						{ "Vehicle Brand": vbrand },
-						{ "Vehicle Model": vtype },
-						{ "Vehicle Reg-No": vno },
 					]}
 				/>
 				<RenderAccordion
@@ -135,6 +123,7 @@ export const RenderAccordion = ({ summary, details, go }) => {
 	if (isUpload) {
 		const imageFrontFile = Object.values(details[0]);
 		previewFront = URL.createObjectURL(imageFrontFile[0]);
+		<br></br>;
 
 		const imageBackFile = Object.values(details[1]);
 		previewBack = URL.createObjectURL(imageBackFile[0]);

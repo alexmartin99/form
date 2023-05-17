@@ -24,4 +24,15 @@
     margin-top: 6rem;
   }
   
- 
+  
+.pannel {
+  margin-left: 50px;
+  border-right: 1px solid #ff3131;
+  
+  
+}
+
+.pannel:last-child {
+  border-right: none;
+}
+

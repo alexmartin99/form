@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import Dropzone from "react-dropzone";
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import "./form.css";
 
 export const Upload = ({
@@ -71,10 +72,11 @@ export const Upload = ({
 			<div className="form-wrapper">
 				<Dropzone onDrop={handleDrop1}>
 					{({ getRootProps, getInputProps }) => (
-						<div style={{ marginTop: "1rem" }}>
+						<div style={{ marginTop: "1rem", backgroundColor:"#f1f1f1", padding:"20px"}}>
 							<div {...getRootProps()}>
 								<input {...getInputProps()} name="upload1" />
-								<p>Drag and drop some files here, 1</p>
+                                   <FileUploadOutlinedIcon/>
+								<p>Upload Warranty Card Front</p>
 							</div>
 							{files1.length > 0 && (
 								<div>
@@ -100,10 +102,11 @@ export const Upload = ({
 
 				<Dropzone onDrop={handleDrop2}>
 					{({ getRootProps, getInputProps }) => (
-						<div style={{ marginTop: "1rem" }}>
+						<div style={{ marginTop: "1rem", backgroundColor:"#f1f1f1", padding:"20px" }}>
 							<div {...getRootProps()}>
 								<input {...getInputProps()} name="upload12" />
-								<p>Drag and drop some files here, 2</p>
+								<FileUploadOutlinedIcon/>
+								<p>Upload Warranty Card Back</p>
 							</div>
 							{files2.length > 0 && (
 								<div>
@@ -135,7 +138,7 @@ export const Upload = ({
 						onClick={() => navigation.previous()}>
 						Back
 					</Button>
-					<Button color="primary" variant="contained" onClick={handleNext}>
+					<Button color="primary" variant="contained" onClick={handleNext}  style={{color:"white",backgroundColor:"#ff3131"}}>
 						Next
 					</Button>
 				</div>
